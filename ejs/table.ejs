@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <%debugger;
+      for (var k in this.names)
+      {
+    %>
+      <th>
+        <%= this.names[k] %>
+      </th>
+    <%
+      }
+    %>
+  </tr>
+  <%
+    for (var k in this.rows)
+    {
+      var row = this.rows[k];
+  %>
+  <tr>
+    <%
+      for (var kk in row)
+        ___ViewO.push("<td>" + row[kk] + "</td>");
+    %>
+  </tr>
+  <%
+    }
+  %>
+</table>
