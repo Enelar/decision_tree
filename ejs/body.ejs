@@ -15,4 +15,19 @@ for (var k in obj.variables)
 
 %>
 
-<%= this.DeferRender('table', {'names' : names, 'rows' : obj.rows}) %>
+<div class='row'>
+  <div id='panel' class='col-md-2'>
+    Panel
+  </div>
+  <div id='desk' class='col-md-8'>
+    Desk
+  </div>
+  <div id='table' class='col-md-2'>
+    Table
+    <%= this.DeferRender('table', {'names' : names, 'rows' : obj.rows}) %>
+  </div>
+</div>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" language='javascript'></script>
+<link href="main.css" rel="stylesheet" media="screen">
