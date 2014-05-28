@@ -1,0 +1,33 @@
+<div class='row'>
+<%
+this.names.pop();
+this.names.push(0, 1);
+  for (var k in this.names)
+  {
+%>
+  <div class='col-md-4'>
+    <%= this.names[k] %>
+  </div>
+<%
+  }
+%>
+</div>
+
+<%
+this.Defer(function()
+{
+  this
+    .first()
+    .children()
+    .draggable(
+    { 
+      helper: "clone",
+      appendTo: "#desk",
+      stop: function(event, ui) 
+      {
+        ui.helper.draggable();
+        return false;
+      }
+    });
+});
+%>
