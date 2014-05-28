@@ -25,7 +25,15 @@ this.Defer(function()
       appendTo: "#desk",
       stop: function(event, ui) 
       {
-        ui.helper.draggable();
+        ui.helper
+          .tooltip(
+          {
+            title: phoxy.Render('ejs/submenu'),
+            html: true,
+            trigger: 'click'
+          })
+          .draggable()
+          .css({width: 'initial'});
         return false;
       }
     });
