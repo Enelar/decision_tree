@@ -16,10 +16,15 @@ this.names.push(0, 1);
 <%
 this.Defer(function()
 {
-  this
-    .first()
-    .children()
-    .draggable(
+  MakeDraggable(
+    this
+      .first()
+      .children()
+    );
+
+  function MakeDraggable( obj )
+  {
+    obj.draggable(
     { 
       helper: "clone",
       appendTo: "#desk",
@@ -34,8 +39,16 @@ this.Defer(function()
           })
           .draggable()
           .css({width: 'initial'});
+        var element = $(this);
+        __context.Defer(function()
+        {
+          debugger;
+          element.draggable( "destroy" );
+          MakeDraggable(element);
+        });
         return false;
       }
     });
+  }
 });
 %>
