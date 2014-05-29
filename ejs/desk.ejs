@@ -58,13 +58,30 @@ function linedraw(ax,ay,bx,by,color)
   return div;
 }
 
-mouse = {x: 0, y: 0};
+mouse = {left: 0, top: 0};
 window.line = {};
+
+window.mouse_line = function()
+{
+  var from = $('#' + window.line.id);
+
+  $('#mouse_line').remove();  
+  if (!from.length)
+    return;
+  
+  var desk = this.first().parent().offset();
+  var to = mouse;
+  to.left -= desk.left - 5;
+  to.top -= desk.top - 5;
+  
+  LDR(from.position(), mouse, 'gray').attr('id', 'mouse_line');
+}
 
 document.addEventListener('mousemove', function(e)
 { 
-  mouse.x = e.clientX || e.pageX; 
-  mouse.y = e.clientY || e.pageY 
+  mouse.left = e.clientX || e.pageX; 
+  mouse.top = e.clientY || e.pageY;
+  window.mouse_line.apply(__context);
 }, false);
 
 this.Defer(function()
@@ -93,6 +110,7 @@ debugger;
       var line = LDR(from.position(), to.position(), window.line.type ? 'red' : 'blue');
       line.attr('id', line_id);
       from.attr('link_' + window.line.type, to.attr('id'));
+      window.line.id = undefined;
     });
 });
 %>
