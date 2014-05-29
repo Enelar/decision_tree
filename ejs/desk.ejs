@@ -1,4 +1,5 @@
-<ancor>
+<ancor></ancor>
+<%= this.DeferRender('submit_button', {}) %>
 <%
 function LDR(from, to, color)
 {
@@ -29,6 +30,7 @@ function linedraw(ax,ay,bx,by,color)
     
   var div = 
     $('<div></div>')
+    .addClass('line')
     .css(
     {
       'height' : length + 'px',
@@ -79,7 +81,7 @@ debugger;
     .click(function(event)
     {
       var tg = event.target;
-      if ($(tg).is('a'))
+      if ($(tg).is('a,button') )
         return;
       if ($(tg).is(':not(div)'))
         tg = $(this).parents('div').first();

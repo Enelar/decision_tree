@@ -1,0 +1,38 @@
+<button>Submit</button>
+
+<%
+this.Defer(function()
+{
+  this
+    .first()
+    .click(function()
+    {
+      debugger;
+      var root = $(this).parent();
+      
+      
+      var ret_e = [], ret_c = [];
+      
+      var elements = 
+        root
+          .find('div.ui-draggable')
+          .each(function()
+          {
+            var id = $(this).attr('id');
+            ret_e.push({id : id, txt : $(this).find('b').html()});
+
+            var 
+              tr = $(this).attr('link_true'),
+              fl = $(this).attr('link_false');
+            
+            if (tr)
+              ret_c.push({nodeA: id, nodeB : tr, type : 'true'});
+            if (fl)
+              ret_c.push({nodeA: id, nodeB : fl, type : 'false'});
+          });
+      
+      var post_object = {'nodes' : ret_e, 'connections' : ret_c};
+      alert("SEND TO SERVER\n" + JSON.stringify(post_object));
+    });
+});
+%>
