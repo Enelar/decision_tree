@@ -2,7 +2,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
 <%
-debugger;
 var obj = $.parseJSON(json_table);
 var names = [];
 var name;
@@ -23,6 +22,7 @@ for (var k in obj.variables)
   </div>
   <div id='desk' class='col-md-8'>
     Desk
+    <%= this.DeferRender('desk', {}) %>
   </div>
   <div id='table' class='col-md-2'>
     Table

@@ -1,0 +1,97 @@
+<ancor>
+<%
+function LDR(from, to, color)
+{
+  return linedraw(from.left, from.top, to.left, to.top, color);
+}
+
+function linedraw(ax,ay,bx,by,color)
+{
+  console.log("Linedraw", arguments);
+ // Internet downloaded code
+  if(ay > by)
+  {
+    var t = ax;
+    ax = bx;
+    bx = t;
+    
+    t = ay;
+    ay = by;
+    by = t;
+  }
+  
+  var delta = [(bx-ax), (by-ay)];
+  var calc = Math.atan(-delta[0]/delta[1]);
+  calc = calc * 180 / Math.PI;
+  var length = Math.sqrt(delta[0]*delta[0]+delta[1]*delta[1]);
+  
+  color = color || 'black'
+    
+  var div = 
+    $('<div></div>')
+    .css(
+    {
+      'height' : length + 'px',
+      'width' : '1px',
+      'background-color' : color,
+      'position' : 'absolute',
+      'top' :  ay + 'px',
+      'left' : ax + 'px',
+      'transform' : 'rotate(' + calc + 'deg)',
+      '-ms-transform' : 'rotate(' + calc + 'deg)',
+      'transform-origin' : '0% 0%',
+      '-moz-transform' : 'rotate(' + calc + 'deg)',
+      '-moz-transform-origin' : '0% 0%',
+      '-webkit-transform' : 'rotate(' + calc + 'deg)',
+      '-webkit-transform-origin' : '0% 0%',
+      '-o-transform' : 'rotate(' + calc + 'deg)',
+      '-o-transform-origin' : '0% 0%'      
+    });
+  
+  __context
+    .first()
+    .parent()
+    .append(div);
+  
+  return div;
+}
+
+mouse = {x: 0, y: 0};
+window.line = {};
+
+document.addEventListener('mousemove', function(e)
+{ 
+  mouse.x = e.clientX || e.pageX; 
+  mouse.y = e.clientY || e.pageY 
+}, false);
+
+this.Defer(function()
+{
+  for (var x = 0; x < 500; x+=50)
+  {
+    linedraw(x, 0, x, 500, 'green');
+    linedraw(0, x, 500, x, 'green');
+  }
+debugger;
+  this
+    .first()
+    .parent()
+    .click(function(event)
+    {
+      var tg = event.target;
+      if ($(tg).is('a'))
+        return;
+      if ($(tg).is(':not(div)'))
+        tg = $(this).parents('div').first();
+
+      var 
+        from = $('#' + window.line.id),
+        to = $(tg);
+      var line_id = from.attr('id') + '_' + window.line.type;
+      $('#' + line_id).remove(); // remove visual link if exsist
+      var line = LDR(from.position(), to.position(), window.line.type ? 'red' : 'blue');
+      line.attr('id', line_id);
+      from.attr('link_' + window.line.type, to.attr('id'));
+    });
+});
+%>

@@ -1,18 +1,18 @@
 <b>
 <%= this.label %>
 </b>
-
+<%= this.DeferRender('submenu', {}) %>
 <%
 this.Defer(function()
 {
-  this.first()
-    .tooltip(
-    {
-      title: phoxy.Render('ejs/submenu'),
-      html: true,
-      trigger: 'click'
-    })
+  this.first()    
+    .parent()
     .draggable()
-    .css({width: 'initial'});
+    .uniqueId()
+    .css(
+    {
+      width: 'initial', 
+      'background-color': 'gray'
+    });
 });
 %>

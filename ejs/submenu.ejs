@@ -1,1 +1,62 @@
-Submenu: DELETE, LINK, ETC.
+<a>1</a> <a>0</0> <a>[X]</a>
+
+<%
+
+this.Defer(function()
+{
+debugger;
+  var true_link = this.first();
+  var false_link = true_link.next();
+  var remove_link = false_link.next();
+  var element = $(this.first()).parents('div').first();
+  
+  remove_link
+    .click(function()
+    {
+      debugger;
+      var id = element.attr('id');
+
+      element
+        .parent()
+        .find('[link_true="'+ id +'"]')
+        .each(function()
+        {
+          $('#' + $(this).attr('id') + '_true').remove();
+          $(this)
+            .removeAttr('link_true');
+        });
+        
+      element
+        .parent()
+        .find('[link_false="'+ id +'"]')
+        .each(function()
+        {
+          $('#' + $(this).attr('id') + '_false').remove();
+          $(this)
+            .removeAttr('link_false');
+        });
+        
+      element
+        .remove();
+    });
+    
+  true_link
+    .add(false_link)
+    .click(function()
+    { 
+      window.line.id = element.attr('id'); 
+    });
+
+    true_link
+    .click(function()
+    {
+      window.line.type = true;
+    });
+  false_link
+    .click(function()
+    {
+      window.line.type = false;
+    });
+    
+});
+%>
