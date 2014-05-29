@@ -37,7 +37,7 @@ this.Defer(function()
           });
       
       var post_object = {'nodes' : ret_e, 'connections' : ret_c};
-      alert("SEND TO SERVER\n" + JSON.stringify(post_object));
+      $.post('', post_object);
     });
 });
 %>
