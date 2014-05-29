@@ -36,8 +36,9 @@ debugger;
             .removeAttr('link_false');
         });
         
-      element
-        .remove();
+      element.remove();
+      $('#' + id + '_true').remove();
+      $('#' + id + '_false').remove();
     });
     
   true_link

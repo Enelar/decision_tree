@@ -1,6 +1,11 @@
 <button>Submit</button>
 
 <%
+function eid( str )
+{
+  return str.substring(6);
+}
+
 this.Defer(function()
 {
   this
@@ -19,16 +24,16 @@ this.Defer(function()
           .each(function()
           {
             var id = $(this).attr('id');
-            ret_e.push({id : id, txt : $(this).find('b').html()});
+            ret_e.push({id : eid(id), txt : $(this).find('b').html()});
 
             var 
               tr = $(this).attr('link_true'),
               fl = $(this).attr('link_false');
             
             if (tr)
-              ret_c.push({nodeA: id, nodeB : tr, type : 'true'});
+              ret_c.push({nodeA: eid(id), nodeB : eid(tr), type : 'true'});
             if (fl)
-              ret_c.push({nodeA: id, nodeB : fl, type : 'false'});
+              ret_c.push({nodeA: eid(id), nodeB : eid(fl), type : 'false'});
           });
       
       var post_object = {'nodes' : ret_e, 'connections' : ret_c};

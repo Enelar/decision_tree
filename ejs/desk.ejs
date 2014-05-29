@@ -81,11 +81,10 @@ debugger;
     .click(function(event)
     {
       var tg = event.target;
-      if ($(tg).is('a,button') )
-        return;
-      if ($(tg).is(':not(div)'))
+      if ($(tg).is(':not(div.ui-draggable)'))
         tg = $(this).parents('div').first();
-
+      if ($(tg).is(':not(div.ui-draggable)'))
+        return;
       var 
         from = $('#' + window.line.id),
         to = $(tg);
