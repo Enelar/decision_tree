@@ -1,5 +1,9 @@
 function LDR(from, to, color)
 {
+  from.left += 10;
+  from.top += 10;
+  to.left += 10;
+  to.top += 10;
   return linedraw(from.left, from.top, to.left, to.top, color);
 }
 

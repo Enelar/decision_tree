@@ -18,6 +18,14 @@ this.Defer(function()
     this
       .first()
       .children()
+      .css
+      ({
+        'border-radius' : '40%',
+        'border' : '1px solid black',
+        'height' : '50px',
+        'text-align' : 'center',
+        'padding-top' : '10px',
+      })
     );
 
   function MakeDraggable( obj )
@@ -26,6 +34,10 @@ this.Defer(function()
     { 
       helper: "clone",
       appendTo: "#desk",
+      start: function(event, ui) 
+      {
+        ui.helper.css({'width' : 'initial'});
+      },
       stop: function(event, ui) 
       {
         ui.helper
