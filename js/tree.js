@@ -1,10 +1,20 @@
 function LDR(from, to, color)
 {
-  from.left += 10;
-  from.top += 10;
-  to.left += 10;
-  to.top += 10;
-  return linedraw(from.left, from.top, to.left, to.top, color);
+  var obj = linedraw(from.left + 10, from.top + 10, to.left + 10, to.top + 10, color);
+  obj.append
+  (
+    $('<div></div>')
+      .css
+      ({
+        'width' : '10px',
+        'height' : '10px',
+        'margin-left' : '-5px',
+        'bottom' : '10px',
+        'background-color' : color,
+      })
+  );
+  
+  return obj;
 }
 
 function linedraw(ax,ay,bx,by,color)

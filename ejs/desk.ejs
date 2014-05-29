@@ -29,13 +29,7 @@ document.addEventListener('mousemove', function(e)
 }, false);
 
 this.Defer(function()
-{
-  for (var x = 0; x < 500; x+=50)
-  {
-    linedraw(x, 0, x, 500, 'green');
-    linedraw(0, x, 500, x, 'green');
-  }
-debugger;
+{ 
   this
     .first()
     .parent()
