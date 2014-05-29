@@ -1,62 +1,6 @@
 <ancor></ancor>
 <%= this.DeferRender('submit_button', {}) %>
 <%
-function LDR(from, to, color)
-{
-  return linedraw(from.left, from.top, to.left, to.top, color);
-}
-
-function linedraw(ax,ay,bx,by,color)
-{
-  console.log("Linedraw", arguments);
- // Internet downloaded code
-  if(ay > by)
-  {
-    var t = ax;
-    ax = bx;
-    bx = t;
-    
-    t = ay;
-    ay = by;
-    by = t;
-  }
-  
-  var delta = [(bx-ax), (by-ay)];
-  var calc = Math.atan(-delta[0]/delta[1]);
-  calc = calc * 180 / Math.PI;
-  var length = Math.sqrt(delta[0]*delta[0]+delta[1]*delta[1]);
-  
-  color = color || 'black'
-    
-  var div = 
-    $('<div></div>')
-    .addClass('line')
-    .css(
-    {
-      'height' : length + 'px',
-      'width' : '1px',
-      'background-color' : color,
-      'position' : 'absolute',
-      'top' :  ay + 'px',
-      'left' : ax + 'px',
-      'transform' : 'rotate(' + calc + 'deg)',
-      '-ms-transform' : 'rotate(' + calc + 'deg)',
-      'transform-origin' : '0% 0%',
-      '-moz-transform' : 'rotate(' + calc + 'deg)',
-      '-moz-transform-origin' : '0% 0%',
-      '-webkit-transform' : 'rotate(' + calc + 'deg)',
-      '-webkit-transform-origin' : '0% 0%',
-      '-o-transform' : 'rotate(' + calc + 'deg)',
-      '-o-transform-origin' : '0% 0%'      
-    });
-  
-  __context
-    .first()
-    .parent()
-    .append(div);
-  
-  return div;
-}
 
 mouse = {left: 0, top: 0};
 window.line = {};

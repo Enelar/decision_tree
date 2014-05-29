@@ -5,7 +5,13 @@ this.Defer(function()
 {
   this.first()    
     .parent()
-    .draggable()
+    .draggable
+    ({
+      drag : function(event, ui)
+      {
+        UpdateLinks(ui.helper);
+      }
+    })
     .uniqueId()
     .css(
     {
