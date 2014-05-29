@@ -1,0 +1,18 @@
+<b>
+<%= this.label %>
+</b>
+
+<%
+this.Defer(function()
+{
+  this.first()
+    .tooltip(
+    {
+      title: phoxy.Render('ejs/submenu'),
+      html: true,
+      trigger: 'click'
+    })
+    .draggable()
+    .css({width: 'initial'});
+});
+%>

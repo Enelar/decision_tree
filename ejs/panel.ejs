@@ -31,14 +31,7 @@ this.Defer(function()
       stop: function(event, ui) 
       {
         ui.helper
-          .tooltip(
-          {
-            title: phoxy.Render('ejs/submenu'),
-            html: true,
-            trigger: 'click'
-          })
-          .draggable()
-          .css({width: 'initial'});
+          .html(phoxy.DeferRender('desk_element', {label: ui.helper.html()}));
         var element = $(this);
         __context.Defer(function()
         {
