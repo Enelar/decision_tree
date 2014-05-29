@@ -17,15 +17,12 @@ for (var k in obj.variables)
 
 <div class='row'>
   <div id='panel' class='col-md-2'>
-    Panel
     <%= this.DeferRender('panel', {'names' : names}) %>
   </div>
   <div id='desk' class='col-md-8'>
-    Desk
     <%= this.DeferRender('desk', {}) %>
   </div>
   <div id='table' class='col-md-2'>
-    Table
     <%= this.DeferRender('table', {'names' : names, 'rows' : obj.rows}) %>
   </div>
 </div>
