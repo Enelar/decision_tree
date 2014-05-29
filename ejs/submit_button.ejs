@@ -12,7 +12,6 @@ this.Defer(function()
     .first()
     .click(function()
     {
-      debugger;
       var root = $(this).parent();
       
       
@@ -37,7 +36,7 @@ this.Defer(function()
           });
       
       var post_object = {'nodes' : ret_e, 'connections' : ret_c};
-      $.post('', post_object);
+      $.post('', JSON.stringify(post_object), null, 'text');
     });
 });
 %>
