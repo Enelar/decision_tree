@@ -7,7 +7,7 @@ function LDR(from, to, color)
   }
   from.top += 30;
   var obj = linedraw(from.left + 10, from.top + 10, to.left + 10, to.top + 10, color);
-  /*
+  
   obj.append
   (
     $('<div></div>')
@@ -16,17 +16,20 @@ function LDR(from, to, color)
         'width' : '10px',
         'height' : '10px',
         'margin-left' : '-5px',
-        'bottom' : '10px',
+        'bottom' : '-10px',
         'background-color' : color,
+        'vertical-align' : 'bottom',
+        'position' : 'absolute',
       })
   );
-  */
+  
   return obj;
 }
 
 function linedraw(ax,ay,bx,by,color)
 {
  // Internet downloaded code
+ /*
   if(ay > by)
   {
     var t = ax;
@@ -37,10 +40,13 @@ function linedraw(ax,ay,bx,by,color)
     ay = by;
     by = t;
   }
+  */
   
   var delta = [(bx-ax), (by-ay)];
   var calc = Math.atan(-delta[0]/delta[1]);
   calc = calc * 180 / Math.PI;
+  if (ay > by)
+    calc = calc - 180;
   var length = Math.sqrt(delta[0]*delta[0]+delta[1]*delta[1]);
   
   color = color || 'black'
