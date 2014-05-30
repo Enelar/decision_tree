@@ -23,6 +23,7 @@ for (var k in obj.variables)
     <%= this.DeferRender('desk', {}) %>
   </div>
   <div id='table' class='col-md-2'>
+    <b id='error' style='color: red'></b>
     <%= this.DeferRender('table', {'names' : names, 'rows' : obj.rows}) %>
   </div>
 </div>

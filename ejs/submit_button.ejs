@@ -36,7 +36,11 @@ this.Defer(function()
           });
       
       var post_object = {'nodes' : ret_e, 'connections' : ret_c};
-      $.post('', JSON.stringify(post_object), null, 'text');
+      $.post('', JSON.stringify(post_object), function(data)
+      {
+        obj = JSON.parse(data);
+        $('#error').html(obj.error);
+      }, 'text');
     });
 });
 %>
