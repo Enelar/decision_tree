@@ -1,6 +1,13 @@
 function LDR(from, to, color)
 {
+  if (color == 'blue')
+  {
+    from.left += 60;
+    to.left += 60;
+  }
+  from.top += 30;
   var obj = linedraw(from.left + 10, from.top + 10, to.left + 10, to.top + 10, color);
+  /*
   obj.append
   (
     $('<div></div>')
@@ -13,7 +20,7 @@ function LDR(from, to, color)
         'background-color' : color,
       })
   );
-  
+  */
   return obj;
 }
 

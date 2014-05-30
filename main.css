@@ -13,6 +13,12 @@ body > div.row {
   bottom: 50px;
 }
 
+#panel {
+  border : 1px solid black;
+  border-radius : 10%;
+  padding: 20px;
+}
+
 .box {
   border : 1px solid black;
   height : 50px;
