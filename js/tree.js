@@ -27,8 +27,15 @@ function LDR(from, to, color)
 {
   if (color == 'blue')
     from.left += 65;
+  from.left += 10;
+  from.top += 43; 
+  if (color != 'gray')
+  {
+    to.left += 42;
+    to.top += 3;
+  }
 
-  var obj = linedraw(from.left + 10, from.top + 43, to.left + 42, to.top + 3, color);
+  var obj = linedraw(from.left, from.top, to.left, to.top, color);
   
   var base_arrow = 
     $('<div></div>')
