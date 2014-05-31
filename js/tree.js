@@ -46,6 +46,8 @@ function LDR(from, to, color)
     to.left += 42;
     to.top += 3;
   }
+  else
+    to.top -= 10;
 
   var obj = linedraw(from.left, from.top, to.left, to.top, color);
   

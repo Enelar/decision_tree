@@ -20,10 +20,12 @@ for (var k in obj.variables)
     <%= this.DeferRender('panel', {'names' : names}) %>
   </div>
   <div id='desk' class='col-md-8'>
+    <div style='width: 100%; height: 20px; text-align: center; padding-top: 10px;'>
+      <b id='error' style='color: red'></b>
+    </div>
     <%= this.DeferRender('desk', {}) %>
   </div>
   <div id='table' class='col-md-2'>
-    <b id='error' style='color: red'></b>
     <%= this.DeferRender('table', {'names' : names, 'rows' : obj.rows}) %>
   </div>
 </div>
