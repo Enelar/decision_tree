@@ -3,10 +3,10 @@
 <%
 
 mouse = {left: 0, top: 0};
-window.line = {};
 
 window.mouse_line = function()
 {
+  window.line = window.line || {};
   var from = $('#' + window.line.id);
 
   $('#mouse_line').remove();  

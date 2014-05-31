@@ -17,15 +17,17 @@ body > div.row {
   border : 1px solid black;
   border-radius : 10%;
   padding: 40px;
+  background-color: #DDD;  
 }
 
 .box {
-//  border : 1px solid black;
+  border : 2px solid black;
   height : 50px;
   text-align : center;
   padding-top : 10px;
-  outline : 2px solid black;
-  outline-offset : -4px;
+//  outline : 2px solid black;
+//  outline-offset : -4px;
+  background-color: #FFF;  
 }
 
 .var_box  {
@@ -34,4 +36,5 @@ body > div.row {
   text-align : center;
   padding-top : 10px;
   border-radius : 40%;
+  background-color: #FFF;  
 }
