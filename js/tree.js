@@ -1,26 +1,51 @@
+$.fn.RotateLine = function( deg, pos )
+{
+  if (typeof pos == 'undefined')
+    pos = '0% 0%';
+  return this.each(function()
+  {
+    $(this).css
+    ({
+      'transform' : 'rotate(' + deg + 'deg)',
+      '-ms-transform' : 'rotate(' + deg + 'deg)',
+      'transform-origin' : pos,
+      '-moz-transform' : 'rotate(' + deg + 'deg)',
+      '-moz-transform-origin' : pos,
+      '-webkit-transform' : 'rotate(' + deg + 'deg)',
+      '-webkit-transform-origin' : pos,
+      '-o-transform' : 'rotate(' + deg + 'deg)',
+      '-o-transform-origin' : pos
+    });
+  });
+}
+function Rotate(obj, deg)
+{
+ // return 
+}
+
 function LDR(from, to, color)
 {
   if (color == 'blue')
-  {
-    from.left += 60;
-    to.left += 60;
-  }
-  from.top += 30;
-  var obj = linedraw(from.left + 10, from.top + 10, to.left + 10, to.top + 10, color);
+    from.left += 65;
+
+  var obj = linedraw(from.left + 10, from.top + 43, to.left + 42, to.top + 3, color);
   
-  obj.append
-  (
+  var base_arrow = 
     $('<div></div>')
       .css
       ({
-        'width' : '10px',
-        'height' : '10px',
-        'margin-left' : '-5px',
-        'bottom' : '-10px',
+        'width' : '8px',
+        'height' : '2px',
+        'bottom' : '0px',
         'background-color' : color,
         'vertical-align' : 'bottom',
         'position' : 'absolute',
-      })
+      });
+  
+  obj.append
+  (
+    base_arrow.clone().RotateLine(-50),
+    base_arrow.clone().RotateLine(-120)
   );
   
   return obj;
@@ -57,21 +82,13 @@ function linedraw(ax,ay,bx,by,color)
     .css(
     {
       'height' : length + 'px',
-      'width' : '1px',
+      'width' : '2px',
       'background-color' : color,
       'position' : 'absolute',
       'top' :  ay + 'px',
-      'left' : ax + 'px',
-      'transform' : 'rotate(' + calc + 'deg)',
-      '-ms-transform' : 'rotate(' + calc + 'deg)',
-      'transform-origin' : '0% 0%',
-      '-moz-transform' : 'rotate(' + calc + 'deg)',
-      '-moz-transform-origin' : '0% 0%',
-      '-webkit-transform' : 'rotate(' + calc + 'deg)',
-      '-webkit-transform-origin' : '0% 0%',
-      '-o-transform' : 'rotate(' + calc + 'deg)',
-      '-o-transform-origin' : '0% 0%'      
-    });
+      'left' : ax + 'px'
+    })
+    .RotateLine(calc);
   
   $('#desk')
     .append(div);

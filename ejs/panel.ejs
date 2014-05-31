@@ -4,12 +4,12 @@ this.names.pop();
   for (var k in this.names)
   {
 %>
-  <div class='col-md-4 var_box'><%= this.names[k] %></div>
+  <div class='col-md-12 var_box'><%= this.names[k] %></div>
 <%
   }
 %>
-  <div class='col-md-4 box'>0</div>
-  <div class='col-md-4 box'>1</div>
+  <div class='col-md-6 box'>0</div>
+  <div class='col-md-6 box'>1</div>
 </div>
 
 <%
@@ -21,7 +21,7 @@ this.Defer(function()
       .children()
       .css
       ({
-    
+        'margin-bottom' : '5px',
       })
     );
 
