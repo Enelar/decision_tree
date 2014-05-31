@@ -18,15 +18,27 @@ $.fn.RotateLine = function( deg, pos )
     });
   });
 }
-function Rotate(obj, deg)
+
+function clone(obj)
 {
- // return 
+  if (obj === null)
+    return obj;
+  if (typeof obj != "object")
+    return obj;
+
+  var copy = obj.constructor();
+  for (var attr in obj)
+    if (obj.hasOwnProperty(attr))
+      copy[attr] = clone(obj[attr]);
+  return copy;
 }
 
 function LDR(from, to, color)
 {
+  from = clone(from);
+  to = clone(to);
   if (color == 'blue')
-    from.left += 65;
+    from.left += 55;
   from.left += 10;
   from.top += 43; 
   if (color != 'gray')
