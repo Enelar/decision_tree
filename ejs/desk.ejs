@@ -1,5 +1,6 @@
 <ancor></ancor>
 <%= this.DeferRender('submit_button', {}) %>
+<button class='btn' onclick='document.location="/StartPage"' style='margin-right: 100px;'>StartPage</button>
 <%
 
 mouse = {left: 0, top: 0};
@@ -36,19 +37,28 @@ this.Defer(function()
     .click(function(event)
     {
       var tg = event.target;
+      if ($(tg).attr('id') == 'desk')
+        return window.line.id = undefined; // remove on free space click
+      
       if ($(tg).is(':not(div.ui-draggable)'))
         tg = $(this).parents('div').first();
       if ($(tg).is(':not(div.ui-draggable)'))
         return;
+
       var 
         from = $('#' + window.line.id),
         to = $(tg);
-      var line_id = from.attr('id') + '_' + window.line.type;
-      $('#' + line_id).remove(); // remove visual link if exsist
-      var line = LDR(from.position(), to.position(), window.line.type ? 'red' : 'blue');
-      line.attr('id', line_id);
-      from.attr('link_' + window.line.type, to.attr('id'));
-      window.line.id = undefined;
+        
+      if (from.attr('id') != to.attr('id'))
+      {
+        var line_id = from.attr('id') + '_' + window.line.type;
+        $('#' + line_id).remove(); // remove visual link if exsist
+        var line = LDR(from.position(), to.position(), window.line.type ? 'red' : 'blue');
+        line.attr('id', line_id);
+        from.attr('link_' + window.line.type, to.attr('id'));
+      }
+      
+      return window.line.id = undefined;
     });
 });
 %>

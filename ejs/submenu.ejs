@@ -8,11 +8,12 @@ this.Defer(function()
   var false_link = true_link.next();
   var remove_link = false_link.next();
   var element = $(this.first()).parents('div').first();
-  
+    
   remove_link
     .click(function()
     {
-      debugger;
+      if (window.line.id)
+        return;
       var id = element.attr('id');
 
       element
@@ -40,11 +41,13 @@ this.Defer(function()
       $('#' + id + '_false').remove();
     });
     
-  true_link
+  true_link // true&false both
     .add(false_link)
     .click(function()
     { 
-      window.line.id = element.attr('id'); 
+      if (window.line.id)
+        return;    
+      window.line.id = element.attr('id');
     });
 
     true_link

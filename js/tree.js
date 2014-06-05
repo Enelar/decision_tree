@@ -137,7 +137,7 @@ function GetParentLinks( element )
   {
     if ($(this).attr('link_true') == id)
       res.push($(this).attr('id') + '_true');
-    else
+    if ($(this).attr('link_false') == id)
       res.push($(this).attr('id') + '_false');
   });
   
@@ -176,5 +176,4 @@ function UpdateLinks( element )
   MoveChild(element);
   MoveChild($('#' + $(element).attr('link_true')));
   MoveChild($('#' + $(element).attr('link_false')));
-
 }
