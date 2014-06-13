@@ -40,6 +40,12 @@ this.Defer(function()
       {
         obj = JSON.parse(data);
         $('#error').html(obj.error);
+        $('.var_box').removeClass('red').removeClass('green');
+        
+        for (var k in obj.red)
+          $('#ui-id-' + obj.red[k]).addClass('red');
+        for (var k in obj.green)
+          $('#ui-id-' + obj.green[k]).addClass('green');
       }, 'text');
     });
 });
