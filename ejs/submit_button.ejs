@@ -43,9 +43,9 @@ this.Defer(function()
         $('.var_box').removeClass('red').removeClass('green');
         
         for (var k in obj.red)
-          $('#ui-id-' + obj.red[k]).addClass('red');
+          $('#ui-id-' + obj.red[k].id).addClass('red');
         for (var k in obj.green)
-          $('#ui-id-' + obj.green[k]).addClass('green');
+          $('#ui-id-' + obj.green[k].id).addClass('green');
       }, 'text');
     });
 });
